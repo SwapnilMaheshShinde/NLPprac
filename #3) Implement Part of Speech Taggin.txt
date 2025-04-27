@@ -1,0 +1,39 @@
+#3) Implement Part of Speech Tagging nltk-natural language toolkit
+
+import nltk
+import numpy as np
+import subprocess
+import sys
+
+# Downgrade numpy if version >= 2
+# if int(np.__version__.split('.')[0]) >= 2:
+#     subprocess.check_call([sys.executable, "-m", "pip", "install", "numpy<2"])
+#     import numpy as np
+
+# Download required models
+#Punkt is a pre-trained model that helps NLTK split text into sentences and word
+#Averaged Perceptron Tagger model (specifically, the English version).
+#This model is used for Part-of-Speech (POS) tagging, meaning it labels words 
+#with their grammatical role (noun, verb, adjective, etc.).
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger_eng')
+
+# Small dictionary to explain common POS tags
+tag_meaning = {
+    'PRP': 'Pronoun',
+    'VBP': 'Verb',
+    'RB': 'Adverb',
+    'NNP': 'Proper Noun',
+    'NN': 'Noun',
+    'JJ': 'Adjective',
+    'VB': 'Verb (base form)'
+}
+# Perform POS tagging
+text = "I love NLP"
+tokens = nltk.word_tokenize(text)
+tags = nltk.pos_tag(tokens, lang='eng')
+
+# Print with meaning
+for word, tag in tags:
+    meaning = tag_meaning.get(tag, 'Unknown')
+    print(f"{word} -> {tag} ({meaning})")

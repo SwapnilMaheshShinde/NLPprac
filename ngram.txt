@@ -1,0 +1,20 @@
+#ngram
+
+from nltk import ngrams
+
+sentence = "I love NLP very much".split()
+
+# Unigrams
+unigrams = list(ngrams(sentence, 1))
+print("Unigrams:", unigrams)
+
+# Bigrams
+bigrams = list(ngrams(sentence, 2))
+print("Bigrams:", bigrams)
+
+# Trigrams
+trigrams = list(ngrams(sentence, 3))
+print("Trigrams:", trigrams)
+
+#When you type "I am", your keyboard suggests "happy", "going", etc.
+#It uses n-grams (bigrams/trigrams) to predict the next word based on what you already typed.
